@@ -1,0 +1,9 @@
+.avatar-produto {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.btn-action {
+  width: 100%;
+}

@@ -1,0 +1,28 @@
+<div class="row mt-2 mr-2 ml-2">
+  <div class="col-sm-12 col-md-6">
+    <h5>Meus Pedidos</h5>
+  </div>
+</div>
+
+<div class="row mt-2 ml-2 mr-2">
+  <div class="col" *ngFor="let pedido of pedidos">
+    <div class="row mt-2 ml-2 mr-2 mouse-enter rounded-sm tile" (click)="router.navigate(['pages/pedidos', pedido.id])">
+      <div class="col-sm-12 col-md-11">
+        <div class="d-table">
+          <div class="d-table-cell align-middle avatar-size">
+            <h5>{{ pedido.produtoList[0].produto.empresa.nome }}</h5>
+            Código: {{ pedido.id }} <br/>
+            Valor: {{ somarTotalCarrinho(pedido) | currency:'BRL' }}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-1">
+        <div class="d-table">
+          <div class="d-table-cell align-middle avatar-size">
+            <fa name="arrow-right"></fa>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

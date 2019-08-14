@@ -1,0 +1,37 @@
+<div class="row mt-2">
+  <div class="col-sm-12 col-md-2">
+    <h5>Selecione uma empresa:</h5>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <input placeholder="Pesquisa.." class="form-control" [(ngModel)]="filterInput" (ngModelChange)="filter()"/>
+  </div>
+</div>
+
+<div class="row mt-2 ml-2 mr-2">
+  <div class="col" *ngFor="let empresa of empresas">
+    <div class="row mt-2 ml-2 mr-2 mouse-enter rounded-sm tile" (click)="selecionarEmpresa(empresa)">
+      <div class="col-sm-12 col-md-4">
+        <div class="rounded-circle avatar-empresa d-table text-center">
+          <div class="d-table-cell align-middle">
+            {{ empresa.nome.substring(0, 1).toUpperCase() }}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-7">
+        <div class="d-table">
+          <div class="d-table-cell align-middle avatar-size">
+            <h5>{{ empresa.nome }}</h5>
+            <p>{{ empresa.quantidadeProdutos }} produtos!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-1">
+        <div class="d-table">
+          <div class="d-table-cell align-middle avatar-size">
+            <fa name="arrow-right"></fa>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

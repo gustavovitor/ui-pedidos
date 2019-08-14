@@ -1,0 +1,81 @@
+<form ngForm [formGroup]="enderecoEntregaForm" (validSubmit)="concluirPedido()">
+  <div class="row mt-2 mr-2 ml-2">
+    <div class="col-sm-12 col-md-6">
+      <h5>Endereço de Entrega</h5>
+      <hr>
+      <div class="form-group">
+        <label for="cep">CEP</label>
+        <input type="text" formControlName="cep" class="form-control" id="cep" placeholder="00000-000">
+      </div>
+
+      <div class="form-group">
+        <label for="logradouro">Logradouro</label>
+        <input type="text" formControlName="logradouro" class="form-control" id="logradouro" placeholder="Rua Chico...">
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Número</label>
+        <input type="text" formControlName="numero" class="form-control" id="numero" placeholder="A21...">
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Bairro</label>
+        <input type="text" formControlName="bairro" class="form-control" id="bairro" placeholder="Bairro Torre...">
+      </div>
+
+      <div class="form-group">
+        <label for="uf">Estado</label>
+        <select class="form-control" id="uf" formControlName="estado" (ngModelChange)="carregarMunicipios()">
+          <option *ngFor="let uf of ufs" [value]="uf.value">{{ uf.label }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="municipio">Cidade</label>
+        <select class="form-control" id="municipio" formControlName="cidade">
+          <option *ngFor="let mun of municipios" [value]="mun.value">{{ mun.label }}</option>
+        </select>
+      </div>
+
+      <h5>Produtos</h5>
+      <hr>
+
+      <div class="row mt-2 mr-2 ml-2">
+        <div class="col-sm-12 col-md-6 mouse-enter rounded-sm" *ngFor="let produtoItem of cartControl.pedido.produtoList">
+          <div class="row mt-2 mr-2 ml-2 mb-2">
+            <div class="col-12 text-center">
+              <img class="rounded-circle avatar-produto img-thumbnail" [src]="produtoItem.produto.imgUrl ? produtoItem.produto.imgUrl : 'https://icon2.kisspng.com/20180525/yxu/kisspng-caixa-econmica-federal-paper-sbw-embalagens-de-p-cesta-5b08776b19f491.7786861215272815151063.jpg'"/>
+            </div>
+          </div>
+          <div class="row mt-2 mr-2 ml-2 mb-2">
+            <div class="col-12">
+              <strong>{{ produtoItem.produto.nome }}</strong> <br/>
+              {{ produtoItem.produto.preco | currency:'BRL' }}x{{ produtoItem.qtdProduto }}<br/> <strong>Total:</strong> {{ (produtoItem.qtdProduto * produtoItem.produto.preco) | currency:'BRL'  }}
+            </div>
+            <div class="col-12 text-center mt-1">
+              <button type="button" class="btn btn-danger btn-action" (click)="excluirItem(produtoItem)"><fa name="remove"></fa></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h5>Pagamento</h5>
+      <hr>
+      <p>Apenas pagamento em dinheiro no momento da entrega está disponível!</p>
+
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="row mt-2 mr-2 ml-2">
+        <div class="col-12">
+          <h3>Finalizar Compra</h3>
+          <strong>Total: </strong> {{ somarTotalCarrinho() | currency:'BRL' }}
+        </div>
+      </div>
+      <div class="row mt-2 mr-2 ml-2">
+        <div class="col-12">
+          <button class="btn btn-success btn-action" [disabled]="submited">F &nbsp;I &nbsp;N &nbsp;A &nbsp;L &nbsp;I &nbsp;Z &nbsp;A &nbsp;R</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

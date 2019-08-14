@@ -1,0 +1,22 @@
+.avatar-empresa {
+  width: 120px;
+  height: 120px;
+  background-color: whitesmoke;
+}
+
+.center {
+  top: 50%;
+}
+
+.avatar-size {
+  height: 120px;
+}
+
+.mouse-enter:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.tile {
+  width: 600px;
+}

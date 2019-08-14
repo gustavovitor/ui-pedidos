@@ -1,0 +1,38 @@
+<div class="row mt-2 mr-2 ml-2">
+  <div class="col-12 rounded-sm">
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-12 text-center">
+        <img class="rounded-circle avatar-produto img-thumbnail" [src]="produtoItem.produto.imgUrl ? produtoItem.produto.imgUrl : 'https://icon2.kisspng.com/20180525/yxu/kisspng-caixa-econmica-federal-paper-sbw-embalagens-de-p-cesta-5b08776b19f491.7786861215272815151063.jpg'"/>
+      </div>
+    </div>
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-12">
+        <strong>{{ produtoItem.produto.nome }}</strong> <br/>
+        {{ produtoItem.produto.preco | currency:'BRL' }}
+      </div>
+    </div>
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-12">
+        {{ produtoItem.produto.descricao }}
+      </div>
+    </div>
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-sm-12 col-md-8">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <button type="button" class="btn btn-dark" (click)="removerQtd()" [disabled]="produtoItem.qtdProduto == 0 || !produtoItem.qtdProduto"><fa name="minus"></fa></button>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input type="number" class="form-control" name="qtdProduto" placeholder="Qtd." [(ngModel)]="produtoItem.qtdProduto"/>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <button type="button" class="btn btn-dark"(click)="adicionarQtd()"><fa name="plus"></fa></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <button type="button" class="btn btn-success btn-adicionar-carrinho" (click)="adicionarProdutoAoCarrinho()" [disabled]="produtoItem.qtdProduto == 0 || !produtoItem.qtdProduto"><fa name="check"></fa></button>
+      </div>
+    </div>
+  </div>
+</div>

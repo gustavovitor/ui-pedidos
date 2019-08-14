@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand nav-link" (click)="navigateToInit()">
+    <strong>Desafio</strong>
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <fa name="bars"></fa>
+  </button>
+
+
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" (click)="navigateToInit()">Inicio</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" (click)="navigateToProdutos()">Produtos</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['carrinho']">Meu Carrinho</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['pedidos']">Meus Pedidos</a>
+      </li>
+    </ul>
+  </div>
+
+  <button class="btn btn-dark" type="button" (click)="logout()"><fa name="sign-out"></fa></button>
+</nav>
+

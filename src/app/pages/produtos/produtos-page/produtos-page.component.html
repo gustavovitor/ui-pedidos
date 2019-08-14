@@ -1,0 +1,27 @@
+<div class="row mt-2">
+  <div class="col-sm-12 col-md-2">
+    <h5>Nome do produto:</h5>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <input placeholder="Pesquisa.." class="form-control" [(ngModel)]="filterInput" (ngModelChange)="filter()"/>
+  </div>
+</div>
+
+<div class="row mt-2 mr-2 ml-2">
+  <div class="col-sm-12 col-md-3 col-lg-2 mouse-enter rounded-sm" *ngFor="let produto of produtos">
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-12 text-center">
+        <img class="rounded-circle avatar-produto img-thumbnail" [src]="produto.imgUrl ? produto.imgUrl : 'https://icon2.kisspng.com/20180525/yxu/kisspng-caixa-econmica-federal-paper-sbw-embalagens-de-p-cesta-5b08776b19f491.7786861215272815151063.jpg'"/>
+      </div>
+    </div>
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-sm-12 col-md-8">
+        <strong>{{ produto.nome }}</strong> <br/>
+        {{ produto.preco | currency:'BRL' }}
+      </div>
+      <div class="col-sm-12 col-md-4 text-center">
+        <button type="button" class="btn btn-success" (click)="abrirModalProduto(produto)"><fa name="cart-plus"></fa></button>
+      </div>
+    </div>
+  </div>
+</div>

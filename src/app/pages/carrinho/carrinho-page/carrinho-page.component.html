@@ -1,0 +1,41 @@
+<div class="row mt-2 mr-2 ml-2" *ngIf="cartControl.pedido.produtoList.length > 0 else naoHaProdutos">
+  <div class="col-sm-12 col-md-3 col-lg-2 mouse-enter rounded-sm" *ngFor="let produtoItem of cartControl.pedido.produtoList">
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-12 text-center">
+        <img class="rounded-circle avatar-produto img-thumbnail" [src]="produtoItem.produto.imgUrl ? produtoItem.produto.imgUrl : 'https://icon2.kisspng.com/20180525/yxu/kisspng-caixa-econmica-federal-paper-sbw-embalagens-de-p-cesta-5b08776b19f491.7786861215272815151063.jpg'"/>
+      </div>
+    </div>
+    <div class="row mt-2 mr-2 ml-2 mb-2">
+      <div class="col-12">
+        <strong>{{ produtoItem.produto.nome }}</strong> <br/>
+        {{ produtoItem.produto.preco | currency:'BRL' }}x{{ produtoItem.qtdProduto }}<br/> <strong>Total:</strong> {{ (produtoItem.qtdProduto * produtoItem.produto.preco) | currency:'BRL'  }}
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-success btn-action" (click)="abrirModalProduto(produtoItem)"><fa name="edit"></fa></button>
+      </div>
+      <div class="col-12 text-center mt-1">
+        <button type="button" class="btn btn-danger btn-action" (click)="cartControl.excluirProduto(produtoItem)"><fa name="remove"></fa></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-2 mr-2 ml-2" *ngIf="cartControl.pedido.produtoList.length > 0">
+  <div class="col-12 text-right">
+    <strong>Total:</strong> {{ somarTotalCarrinho() | currency:'BRL' }}
+  </div>
+</div>
+
+<div class="row mt-2 mr-2 ml-2" *ngIf="cartControl.pedido.produtoList.length > 0">
+  <div class="col-12 text-right">
+    <button type="button" class="btn btn-success" (click)="finalizarCompra()">Finalizar</button>
+  </div>
+</div>
+
+<ng-template #naoHaProdutos>
+  <div class="row mt-2 mr-2 ml-2">
+    <div class="col text-center">
+      Não há produtos no carrinho..
+    </div>
+  </div>
+</ng-template>

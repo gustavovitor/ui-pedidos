@@ -1,0 +1,40 @@
+<div class="row mt-2 ml-2 mr-2">
+  <div class="col-sm-12 col-md-2">
+    <div class="rounded-circle avatar-empresa d-table text-center">
+      <div class="d-table-cell align-middle">
+        {{ empresa.nome.substring(0, 1).toUpperCase() }}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-10">
+    <div class="d-table">
+      <div class="d-table-cell align-top">
+        <h5 class="mt-3">Informações da Empresa</h5>
+        <hr>
+        <strong>{{ empresa.nome }}</strong>
+        <br/>
+        CNPJ: {{ empresa.cnpj }}
+        <br/>
+        IE: {{ empresa.ie }}
+        <br/>
+        Abertura: {{ empresa.dataAbertura | date:'dd/mm/y' }}
+        <br/>
+        Email: {{ empresa.email }}
+        <br/>
+        Telefone: {{ empresa.fone }}
+        <h5 class="mt-3">Endereço</h5>
+        <hr>
+        CEP: {{ empresa.endereco.cep }}
+        <br/>
+        Logradouro: {{ empresa.endereco.logradouro }}
+        <br/>
+        Bairro: {{ empresa.endereco.bairro }}
+        <br/>
+        Cidade: {{ empresa.endereco.cidade }}
+        <br/>
+        Estado: {{ empresa.endereco.estado }}
+      </div>
+    </div>
+  </div>
+</div>
